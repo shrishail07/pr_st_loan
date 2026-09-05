@@ -42,16 +42,25 @@ st.markdown("""
             border-radius: 6px !important;
         }
 
-        /* COMPLETE FIX FOR THE SELECT/DROPDOWN BOX */
+        /* COMPLETE FIX FOR THE SELECT/DROPDOWN BOX AND SELECTED VALUE */
         div[data-testid="stForm"] div[data-baseweb="select"] > div {
-            background-color: #FFFFFF !important; /* Fixed background container to white */
-            border: 1px solid #00F0FF !important; /* Matches theme accents */
+            background-color: #FFFFFF !important; /* Keeps the container pure white */
+            border: 1px solid #00F0FF !important;
             border-radius: 6px !important;
         }
         
-        /* Force text inside the dropdown selection element to black */
+        /* Forces the text container inside the chosen selection bar to stay solid black */
+        div[data-testid="stForm"] div[data-baseweb="select"] div[data-testid="stMarkdownContainer"] p,
+        div[data-testid="stForm"] div[data-baseweb="select"] span,
+        div[data-testid="stForm"] div[data-baseweb="select"] p,
         div[data-testid="stForm"] div[data-baseweb="select"] * {
-            color: #000000 !important;
+            color: #000000 !important; /* Eliminates the blank chosen text layout bug */
+        }
+        
+        /* FIX FOR POPUP DROPDOWN MENU LIST ITEMS */
+        div[data-testid="stSelectboxVirtualDropdown"] li {
+            color: #000000 !important; /* Makes options list clearly legible */
+            background-color: #FFFFFF !important;
         }
         
         /* 4. Brand New Styled Submit Button */
@@ -82,6 +91,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 
 
