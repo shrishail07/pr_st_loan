@@ -21,61 +21,68 @@ st.markdown("""
         /* 1. Target the specific form container background */
         div[data-testid="stForm"] {
             background-color: #4B0082 !important; /* Deep Indigo/Purple */
-            padding: 20px !important;
-            border-radius: 10px !important;
-            border: none !important;
+            padding: 25px !important;
+            border-radius: 12px !important;
+            border: 2px solid #00F0FF !important; /* Premium Cyan Border */
         }
         
-        /* 2. Target text color inside the form to be White for readability */
+        /* 2. Target text headers and labels to stand out */
         div[data-testid="stForm"] p, 
         div[data-testid="stForm"] h3, 
         div[data-testid="stForm"] label,
         div[data-testid="stForm"] span {
-            color: #FFFFFF !important; /* White Text */
+            color: #FFFFFF !important; /* Crystal White Text */
             font-weight: bold !important;
         }
 
-        /* 3. Style the text inputs and selection blocks so they are uniform white */
+        /* 3. Style standard text/number inputs to match the clean design */
         div[data-testid="stForm"] input {
             background-color: #FFFFFF !important;
             color: #000000 !important;
+            border-radius: 6px !important;
         }
 
-        /* FIX FOR THE SELECT/DROPDOWN BOX */
+        /* COMPLETE FIX FOR THE SELECT/DROPDOWN BOX */
         div[data-testid="stForm"] div[data-baseweb="select"] > div {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
+            background-color: #FFFFFF !important; /* Fixed background container to white */
+            border: 1px solid #00F0FF !important; /* Matches theme accents */
+            border-radius: 6px !important;
         }
         
-        /* Fix text color inside selection dropdown control */
+        /* Force text inside the dropdown selection element to black */
         div[data-testid="stForm"] div[data-baseweb="select"] * {
             color: #000000 !important;
         }
         
-        /* 4. Target the form submit button text and background explicitly */
+        /* 4. Brand New Styled Submit Button */
         div[data-testid="stForm"] button {
-            background-color: #310054 !important; /* Slightly darker purple than container for contrast */
-            border: 1px solid #FFFFFF !important; /* Clean white border outline */
+            background-color: #00F0FF !important; /* Electric Cyan background */
+            border: none !important; 
             width: 100% !important; 
-            color: #FFFFFF !important; /* Permanent white text color */
+            color: #000000 !important; /* High contrast black text */
+            border-radius: 8px !important;
+            padding: 10px 0px !important;
+            transition: all 0.3s ease !important;
         }
 
-        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO WHITE */
+        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO BLACK */
         div[data-testid="stForm"] button * {
-            color: #FFFFFF !important; 
+            color: #000000 !important; 
             font-weight: bold !important;
+            font-size: 16px !important;
         }
         
-        /* Button hover effect */
+        /* Button hover effect - darkens smoothly on cursor hover */
         div[data-testid="stForm"] button:hover {
-            background-color: #5C00A3 !important; /* Vibrant purple pop when cursor moves over it */
-            border: 1px solid #FFFFFF !important;
+            background-color: #00C2CC !important; /* Deeper turquoise feedback */
+            box-shadow: 0 0 10px #00F0FF !important; /* Futuristic outer glow */
         }
         div[data-testid="stForm"] button:hover * {
-            color: #FFFFFF !important;
+            color: #000000 !important;
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 with st.form("Requesting the Data from the Client for loan application..."):
         st.warning("please fill the following details to request the data from the client for the college profile and department details.")
