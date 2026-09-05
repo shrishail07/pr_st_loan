@@ -6,107 +6,142 @@ from supabase_client import supabase
 st.set_page_config(page_title="Education Loan Platform", layout="wide")
 st.markdown("""
     <style>
-        /* Modern App Background */
+        /* =================================================================
+           1. CORE APPLICATION BACKGROUND
+           ================================================================= */
         .stApp {
-            background-color: #0F172A !important; /* Premium Midnight Dark Blue */
+            background-color: #0F172A !important; /* Premium Dark Navy */
         }
         
-        /* Master Text and Headers Styling (Only inside the main body) */
-        .main h1, .main h2, .main h3, .main label, .main p {
-            color: #F8FAFC !important; /* Ultra clean off-white text */
+        /* =================================================================
+           2. SIDEBAR ISOLATION (No bleed into the main screen)
+           ================================================================= */
+        section[data-testid="stSidebar"] {
+            background-color: #FFF0F5 !important; /* Locks light pink sidebar background */
+        }
+        
+        section[data-testid="stSidebar"] * {
+            color: #1E293B !important; /* Crisp dark charcoal for sidebar links */
             font-weight: 600 !important;
         }
-        
-        /* Center Title Style Adjustment */
-        .main h1 {
+
+        /* =================================================================
+           3. MAIN PANEL OVERRIDES (Titles, Forms, Labels)
+           ================================================================= */
+        /* Targets the grand title directly */
+        div[data-testid="stHeaderBlock"] h1, 
+        .main h1, 
+        .main h2 {
+            color: #FFFFFF !important;
             text-align: center !important;
-            margin-bottom: 20px !important;
-            font-size: 2.2rem !important;
+            font-weight: 700 !important;
             letter-spacing: 0.5px !important;
         }
+        
+        /* Subheaders and Input Labels inside the main container */
+        .main h3, 
+        .main label, 
+        .main p {
+            color: #F1F5F9 !important; /* Clear off-white for full visibility */
+            font-weight: 600 !important;
+        }
 
-        /* Style Streamlit Tabs Bar */
+        /* =================================================================
+           4. STUNNING CARD NAVIGATION TABS
+           ================================================================= */
         .stTabs [data-baseweb="tab-list"] {
-            gap: 10px !important;
+            gap: 12px !important;
             background-color: transparent !important;
             justify-content: center !important;
+            margin-bottom: -4px !important; /* Pulls container snugly up to card */
         }
 
-        .stTabs [data-baseweb="tab"] p {
-            color: #F8FAFC !important; /* Forces visible white text on tabs */
-        }
-
+        /* Dormant Tab Button Style */
         .stTabs [data-baseweb="tab"] {
             background-color: #1E293B !important;
             border: 1px solid #334155 !important;
-            padding: 10px 30px !important;
+            padding: 12px 35px !important;
             border-radius: 8px 8px 0px 0px !important;
-            font-size: 16px !important;
-            transition: all 0.2s ease !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+
+        /* Force inner text of dormant tabs to stay white */
+        .stTabs [data-baseweb="tab"] * {
+            color: #94A3B8 !important; /* Clean muted grey/white text */
+            font-weight: 600 !important;
+            font-size: 15px !important;
         }
 
         /* Active Tab Accent Styling */
         .stTabs [aria-selected="true"] {
-            background-color: #38BDF8 !important; /* Clean Sky Blue Accent */
+            background-color: #38BDF8 !important; /* Electric Sky Blue */
             border-color: #38BDF8 !important;
         }
         
-        .stTabs [aria-selected="true"] p {
-            color: #0F172A !important; /* Black text on the active sky blue tab */
+        /* Force inner text of the active tab to turn dark */
+        .stTabs [aria-selected="true"] * {
+            color: #0F172A !important; /* Stark contrast black text */
+            font-weight: 700 !important;
         }
 
-        /* Content Panel/Card under the tabs */
+        /* Main Content Panel Box under the tabs */
         .stTabs [data-testid="stVerticalBlock"] > div {
-            background-color: #1E293B !important; /* Polished Dashboard Dark Card */
-            padding: 25px !important;
+            background-color: #1E293B !important; /* Polished Sleek Dashboard Card */
+            padding: 30px !important;
             border-radius: 12px !important;
             border: 1px solid #334155 !important;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4) !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.4) !important;
         }
 
-        /* UNIVERSAL INPUT BOX VISIBILITY FIX */
+        /* =================================================================
+           5. SECURE & HIGH-VISIBILITY INPUT BOXES
+           ================================================================= */
         div[data-testid="stTextInput"] input {
-            background-color: #FFFFFF !important; /* Locked to clean white background */
-            color: #0F172A !important; /* Rich charcoal text color */
+            background-color: #FFFFFF !important; /* Crisp solid white fields */
+            color: #0F172A !important; /* Deep slate font color */
             border-radius: 8px !important;
             border: 1px solid #CBD5E1 !important;
-            height: 45px !important;
+            height: 46px !important;
             font-size: 16px !important;
             font-weight: 500 !important;
         }
-
-        /* AUTHENTICATION ACTION BUTTONS */
-        div.stButton > button {
-            background-color: #38BDF8 !important; /* Bright Sky Blue */
-            color: #0F172A !important; /* Solid dark text label */
-            font-weight: 700 !important;
-            font-size: 16px !important;
-            width: 100% !important;
-            height: 45px !important;
-            border-radius: 8px !important;
-            border: none !important;
-            margin-top: 15px !important;
-            cursor: pointer !important;
-            transition: all 0.2s ease-in-out !important;
+        
+        /* Highlight input border when focused/clicked */
+        div[data-testid="stTextInput"] input:focus {
+            border: 2px solid #38BDF8 !important;
         }
 
-        /* Button Hover Feedback Actions */
+        /* =================================================================
+           6. ACTION BUTTONS (Login & Sign Up)
+           ================================================================= */
+        div.stButton > button {
+            background-color: #38BDF8 !important; /* Vibrant Action Sky Blue */
+            border: none !important;
+            width: 100% !important;
+            height: 46px !important;
+            border-radius: 8px !important;
+            margin-top: 20px !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 6px -1px rgba(56, 189, 248, 0.2) !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+        
+        /* Button text formatting */
+        div.stButton > button * {
+            color: #0F172A !important; /* High contrast bold black text */
+            font-weight: 700 !important;
+            font-size: 16px !important;
+        }
+
+        /* Button Hover Feedback */
         div.stButton > button:hover {
-            background-color: #0EA5E9 !important; /* Darker vibrant blue on hover */
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4) !important;
+            background-color: #0EA5E9 !important; /* Richer accent blue on hover */
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3) !important;
             transform: translateY(-1px) !important;
         }
         
         div.stButton > button:active {
             transform: translateY(1px) !important;
-        }
-
-        /* =====================================================================
-           CRITICAL FIX FOR THE LEFT SIDEBAR TEXT VISIBILITY
-           ===================================================================== */
-        section[data-testid="stSidebar"] * {
-            color: #1E293B !important; /* Forces all hidden sidebar text to dark slate/black */
-            font-weight: 600 !important;
         }
     </style>
 """, unsafe_allow_html=True)
