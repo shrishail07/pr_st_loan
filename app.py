@@ -4,10 +4,6 @@ from supabase_client import supabase
 
 # 1. MUST BE FIRST STREAMLIT COMMAND: Set layout configuration
 st.set_page_config(page_title="Education Loan Platform", layout="wide")
-
-# =====================================================================
-# PREMIUM THEMING AND VISIBILITY LAYOUT (CSS)
-# =====================================================================
 st.markdown("""
     <style>
         /* Modern App Background */
@@ -15,8 +11,8 @@ st.markdown("""
             background-color: #0F172A !important; /* Premium Midnight Dark Blue */
         }
         
-        /* Master Text and Headers Styling */
-        h1, h2, h3, label, p, .stTabs [data-baseweb="tab"] {
+        /* Master Text and Headers Styling (Only inside the main body) */
+        .main h1, .main h2, .main h3, .main label, .main p {
             color: #F8FAFC !important; /* Ultra clean off-white text */
             font-weight: 600 !important;
         }
@@ -36,6 +32,10 @@ st.markdown("""
             justify-content: center !important;
         }
 
+        .stTabs [data-baseweb="tab"] p {
+            color: #F8FAFC !important; /* Forces visible white text on tabs */
+        }
+
         .stTabs [data-baseweb="tab"] {
             background-color: #1E293B !important;
             border: 1px solid #334155 !important;
@@ -48,8 +48,11 @@ st.markdown("""
         /* Active Tab Accent Styling */
         .stTabs [aria-selected="true"] {
             background-color: #38BDF8 !important; /* Clean Sky Blue Accent */
-            color: #0F172A !important;
             border-color: #38BDF8 !important;
+        }
+        
+        .stTabs [aria-selected="true"] p {
+            color: #0F172A !important; /* Black text on the active sky blue tab */
         }
 
         /* Content Panel/Card under the tabs */
@@ -64,7 +67,7 @@ st.markdown("""
         /* UNIVERSAL INPUT BOX VISIBILITY FIX */
         div[data-testid="stTextInput"] input {
             background-color: #FFFFFF !important; /* Locked to clean white background */
-            color: #0F172A !important; /* Rich charcoal text color (Zero blank visibility traps) */
+            color: #0F172A !important; /* Rich charcoal text color */
             border-radius: 8px !important;
             border: 1px solid #CBD5E1 !important;
             height: 45px !important;
@@ -97,8 +100,17 @@ st.markdown("""
         div.stButton > button:active {
             transform: translateY(1px) !important;
         }
+
+        /* =====================================================================
+           CRITICAL FIX FOR THE LEFT SIDEBAR TEXT VISIBILITY
+           ===================================================================== */
+        section[data-testid="stSidebar"] * {
+            color: #1E293B !important; /* Forces all hidden sidebar text to dark slate/black */
+            font-weight: 600 !important;
+        }
     </style>
 """, unsafe_allow_html=True)
+
 
 col1, col2, col3 = st.columns([1, 2, 1])
 
