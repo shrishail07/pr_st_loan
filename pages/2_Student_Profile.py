@@ -16,6 +16,7 @@ st.set_page_config(layout="wide")
 st.info("Student Profile & Parent details")
 
 # --- INJECT CUSTOM PURPLE & WHITE FORM STYLE ---
+# --- INJECT CUSTOM PURPLE & WHITE FORM STYLE ---
 st.markdown("""
     <style>
         /* 1. Target the specific form container background */
@@ -26,7 +27,7 @@ st.markdown("""
             border: none !important;
         }
         
-        /* 2. Target text color inside the form to be White/dark for readability */
+        /* 2. Target text color inside the form to be White for readability */
         div[data-testid="stForm"] p, 
         div[data-testid="stForm"] h3, 
         div[data-testid="stForm"] label,
@@ -43,25 +44,24 @@ st.markdown("""
         }
         
         /* 4. Target the form submit button text and background explicitly */
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] {
+        div[data-testid="stForm"] button {
             background-color: #FFFFFF !important;
             border: 1px solid #000000 !important;
             width: 100% !important; 
+            color: #000000 !important;
         }
 
-        /* FORCE BUTTON TEXT COLOR TO BLACK */
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] p,
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] span,
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] div {
+        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO BLACK */
+        div[data-testid="stForm"] button * {
             color: #000000 !important; 
             font-weight: bold !important;
         }
         
         /* Button hover effect */
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover {
+        div[data-testid="stForm"] button:hover {
             background-color: #F0F2F6 !important;
         }
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover p {
+        div[data-testid="stForm"] button:hover * {
             color: #000000 !important;
         }
     </style>
