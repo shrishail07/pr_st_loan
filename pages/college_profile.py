@@ -26,7 +26,7 @@ st.markdown("""
             border: none !important;
         }
         
-        /* 2. Target text color inside the form to be White/dark for readability */
+        /* 2. Target text color inside the form to be White for readability */
         div[data-testid="stForm"] p, 
         div[data-testid="stForm"] h3, 
         div[data-testid="stForm"] label,
@@ -35,29 +35,48 @@ st.markdown("""
             font-weight: bold !important;
         }
 
-        /* 3. Style the inputs so they stand out against purple background */
-        div[data-testid="stForm"] input, 
-        div[data-testid="stForm"] div[data-baseweb="select"] {
+        /* 3. Style the text inputs and selection blocks so they are uniform white */
+        div[data-testid="stForm"] input {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+
+        /* FIX FOR THE SELECT/DROPDOWN BOX */
+        div[data-testid="stForm"] div[data-baseweb="select"] > div {
             background-color: #FFFFFF !important;
             color: #000000 !important;
         }
         
-        /* 4. Target the form submit button to be white with black text */
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] {
-            background-color: #FFFFFF !important;
+        /* Fix text color inside selection dropdown control */
+        div[data-testid="stForm"] div[data-baseweb="select"] * {
             color: #000000 !important;
-            border: 1px solid #000000 !important;
+        }
+        
+        /* 4. Target the form submit button text and background explicitly */
+        div[data-testid="stForm"] button {
+            background-color: #310054 !important; /* Slightly darker purple than container for contrast */
+            border: 1px solid #FFFFFF !important; /* Clean white border outline */
+            width: 100% !important; 
+            color: #FFFFFF !important; /* Permanent white text color */
+        }
+
+        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO WHITE */
+        div[data-testid="stForm"] button * {
+            color: #FFFFFF !important; 
             font-weight: bold !important;
-            width: 100% !important; /* Optional: Makes button span full width */
         }
         
         /* Button hover effect */
-        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover {
-            background-color: #F0F2F6 !important;
-            color: #000000 !important;
+        div[data-testid="stForm"] button:hover {
+            background-color: #5C00A3 !important; /* Vibrant purple pop when cursor moves over it */
+            border: 1px solid #FFFFFF !important;
+        }
+        div[data-testid="stForm"] button:hover * {
+            color: #FFFFFF !important;
         }
     </style>
 """, unsafe_allow_html=True)
+
 with st.form("Requesting the Data from the Client for loan application..."):
         st.warning("please fill the following details to request the data from the client for the college profile and department details.")
         # Create a columns for the input fields
