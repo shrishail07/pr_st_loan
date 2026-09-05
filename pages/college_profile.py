@@ -59,7 +59,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 with st.form("Requesting the Data from the Client for loan application..."):
-        st.info("please fill the following details to request the data from the client for the college profile and department details.")
+        st.warning("please fill the following details to request the data from the client for the college profile and department details.")
         # Create a columns for the input fields
         university_name  = st.text_input("Enter the University Name...")
         college_name     = st.text_input("Enter the College Name...")
