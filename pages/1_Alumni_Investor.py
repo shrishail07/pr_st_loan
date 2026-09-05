@@ -3,7 +3,7 @@ from supabase_client import supabase
 
 st.markdown(
     '<div style="background-color: #e8f4f8; padding: 10px; border-left: 5px solid #29b6f6; border-radius: 4px;">'
-    '<span style="font-size: 20px; font-weight: bold; color: #005a80;">'
+    '<span style="font-size: 20px; font-weight: bold; color: #C71585;">'
     'Alumni Investor Profile.....'
     '</span>'
     '</div>', 
