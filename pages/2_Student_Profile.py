@@ -1,6 +1,13 @@
 import streamlit as st
 from supabase_client import supabase
-
+st.markdown(
+    '<div style="background-color: #e8f4f8; padding: 10px; border-left: 5px solid #29b6f6; border-radius: 4px;">'
+    '<span style="font-size: 20px; font-weight: bold; color: #005a80;">'
+    'Please fill the Head of the Department Details.....'
+    '</span>'
+    '</div>', 
+    unsafe_allow_html=True
+)
 if not st.session_state.get('authenticated'):
     st.warning("Please log in from the main page.")
     st.stop()
