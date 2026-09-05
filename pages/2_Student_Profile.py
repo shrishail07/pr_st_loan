@@ -13,7 +13,7 @@ if not st.session_state.get('authenticated'):
     st.stop()
 
 st.set_page_config(layout="wide")
-st.info("Student Profile & Education Loan Application")
+st.info("Student Profile & Parent details")
 
 
 st.divider()
