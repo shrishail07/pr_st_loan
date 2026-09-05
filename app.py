@@ -1,6 +1,23 @@
 import streamlit as st
 from supabase_client import supabase
 
+
+# Inject custom CSS to center all st.image elements
+st.markdown(
+    """
+    <style>
+    [data-testid="stImage"] {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Display the image normally
+st.image("pages/logo.png")
+
 st.set_page_config(page_title="Education Loan Platform", layout="wide")
 
 # Initialize session state for authentication
