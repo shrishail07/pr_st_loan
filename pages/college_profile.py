@@ -9,33 +9,41 @@ st.set_page_config(layout="wide")
 st.title("Requesting the Data from the Client ......")
 
 with st.form("Requesting the Data from the Client for loan application..."):
-    st.subheader("please fill the following details to request the data from the client for the college profile and department details.")
-    # Create a columns for the input fields
-    col1, col2, col3 = st.columns(3)
-    with col1:
+        st.info("please fill the following details to request the data from the client for the college profile and department details.")
+        # Create a columns for the input fields
         university_name  = st.text_input("Enter the University Name...")
         college_name     = st.text_input("Enter the College Name...")
         about_college    = st.text_area("Enter the About College Details...")
         history          = st.text_area("Enter the History of Your College...")
         accreditations   = st.text_input("Enter the Accreditations of Your College...")
 
-    with col2:
+        st.info("please fill the Principal Details.....")
+        principal_name   = st.text_input("Enter the Principal Name...")
+        principal_email  = st.text_input("Enter the Principal Email...")
+        principal_contact = st.text_input("Enter the Principal Contact Number...")
+
+        st.info("please fill the Department Details.....")
         department_name = st.text_input("Enter the Department Name...")
         intake_year     = st.number_input("Enter the Intake Year of the department...", min_value=2000, max_value=2100, step=1)
         placement_rate  = st.number_input("Enter the Placement Rate of the department (%)...", min_value=0.0, max_value=100.0, step=0.1)
         mou_signed      = st.text_input("Enter the MOUs Signed by the department...")
 
-    with col3:
+        st.info("please fill the Head of the Department Details.....")
+        hod_name        = st.text_input("Enter the Head of the Department Name...")
+        hod_email       = st.text_input("Enter the Head of the Department Email...")
+        contact_number  = st.text_input("Enter the Head of the Department Contact Number...")
+
+        st.info("please fill the Center of Excellence and Highest Package Details.....")
         center_of_excellence  = st.text_input("Enter the Center of Excellence details...")
         highest_package       = st.number_input("Enter the Highest Package offered by the department (in LPA)...", min_value=0.0, step=0.1)
 
-        st.subheader("Government Program Fee Details(in INR).....")
+        st.info("Government Program Fee Details(in INR).....")
         program_fee_gov       = st.number_input("Enter the Government Program Fee (in INR)...", min_value=0.0, step=1000.0)
         add_on_fee            = st.number_input("Enter the Add-on Fee (in INR)...", min_value=0.0, step=1000.0)
-        st.subheader("ComedK Program Fee Details(in INR).....")
+        st.info("ComedK Program Fee Details(in INR).....")
         program_fee_comedk    = st.number_input("Enter the ComedK Program Fee (in INR)...", min_value=0.0, step=1000.0)
         add_on_fee_comedk     = st.number_input("Enter the ComedK Add-on Fee (in INR)...", min_value=0.0, step=1000.0)
-        st.subheader("Management Program Fee Details(in INR).....")
+        st.info("Management Program Fee Details(in INR).....")
         program_fee_mgmt      = st.number_input("Enter the Management Program Fee (in INR)...", min_value=0.0, step=1000.0)
         add_on_fee_mgmt       = st.number_input("Enter the Management Add-on Fee (in INR)...", min_value=0.0, step=1000.0) 
 
@@ -59,7 +67,13 @@ with st.form("Requesting the Data from the Client for loan application..."):
                 "program_fee_comedk": program_fee_comedk,
                 "add_on_fee_comedk": add_on_fee_comedk,
                 "program_fee_mgmt": program_fee_mgmt,
-                "add_on_fee_mgmt": add_on_fee_mgmt
+                "add_on_fee_mgmt": add_on_fee_mgmt,
+                "hod_name": hod_name,
+                "hod_email": hod_email,
+                "contact_number": contact_number,
+                "principal_name": principal_name,
+                "principal_email": principal_email,
+                "principal_contact": principal_contact
             }
 
 
