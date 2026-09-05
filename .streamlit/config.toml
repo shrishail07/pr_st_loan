@@ -1,6 +1,6 @@
 [theme]
-primaryColor = "#FF4B4B"
+primaryColor = "#FF69B4"        # Changes your submit buttons and highlights to vibrant pink
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F0F2F6"
+secondaryBackgroundColor = "#FFF0F5" # Makes form backgrounds a soft blush pink
 textColor = "#31333E"
-font = "sans serif"
+
