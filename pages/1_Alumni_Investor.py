@@ -27,12 +27,12 @@ st.markdown("""
             border: none !important;
         }
         
-        /* 2. Target text color inside the form to be Pink/dark for readability */
+        /* 2. Target text color inside the form to be White/dark for readability */
         div[data-testid="stForm"] p, 
         div[data-testid="stForm"] h3, 
         div[data-testid="stForm"] label,
         div[data-testid="stForm"] span {
-            color: #C71585 !important; /* Pink Text */
+            color: #FFFFFF !important; /* White Text */
             font-weight: bold !important;
         }
 
