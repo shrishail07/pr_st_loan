@@ -69,5 +69,5 @@ else:
     st.write("Please select a page from the sidebar to continue:")
     st.write("👉 **Alumni Investor**")
     st.write("👉 **Student Profile**")
-    st.write("👉 **College Profile **")
+    st.write("👉 **College Profile**")
 
