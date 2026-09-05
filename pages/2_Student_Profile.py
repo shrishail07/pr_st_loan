@@ -42,19 +42,27 @@ st.markdown("""
             color: #000000 !important;
         }
         
-        /* 4. Target the form submit button to be white with black text */
+        /* 4. Target the form submit button text and background explicitly */
         div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] {
             background-color: #FFFFFF !important;
-            color: #000000 !important;
             border: 1px solid #000000 !important;
+            width: 100% !important; 
+        }
+
+        /* FORCE BUTTON TEXT COLOR TO BLACK */
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] p,
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] span,
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] div {
+            color: #000000 !important; 
             font-weight: bold !important;
-            width: 100% !important; /* Optional: Makes button span full width */
         }
         
         /* Button hover effect */
         div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover {
-            background-color: #e8f4f8 !important;
-            color: #C71585 !important;
+            background-color: #F0F2F6 !important;
+        }
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover p {
+            color: #000000 !important;
         }
     </style>
 """, unsafe_allow_html=True)
