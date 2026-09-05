@@ -16,6 +16,50 @@ if not st.session_state.get('authenticated'):
 
 st.info("Help fund the next generation of students from your alma mater.")
 
+# --- INJECT CUSTOM PURPLE & WHITE FORM STYLE ---
+st.markdown("""
+    <style>
+        /* 1. Target the specific form container background */
+        div[data-testid="stForm"] {
+            background-color: #4B0082 !important; /* Deep Indigo/Purple */
+            padding: 20px !important;
+            border-radius: 10px !important;
+            border: none !important;
+        }
+        
+        /* 2. Target text color inside the form to be black/dark for readability */
+        div[data-testid="stForm"] p, 
+        div[data-testid="stForm"] h3, 
+        div[data-testid="stForm"] label,
+        div[data-testid="stForm"] span {
+            color: #000000 !important; /* Black Text */
+            font-weight: bold !important;
+        }
+
+        /* 3. Style the inputs so they stand out against purple background */
+        div[data-testid="stForm"] input, 
+        div[data-testid="stForm"] div[data-baseweb="select"] {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+        
+        /* 4. Target the form submit button to be white with black text */
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"] {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+            border: 1px solid #000000 !important;
+            font-weight: bold !important;
+            width: 100% !important; /* Optional: Makes button span full width */
+        }
+        
+        /* Button hover effect */
+        div[data-testid="stForm"] button[data-testid="stFormSubmitButton"]:hover {
+            background-color: #F0F2F6 !important;
+            color: #000000 !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 with st.form("alumni_form"):
     st.subheader("Professional Details")
     
