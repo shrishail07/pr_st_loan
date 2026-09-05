@@ -16,7 +16,6 @@ st.set_page_config(layout="wide")
 st.info("Student Profile & Parent details")
 
 # --- INJECT CUSTOM PURPLE & WHITE FORM STYLE ---
-# --- INJECT CUSTOM PURPLE & WHITE FORM STYLE ---
 st.markdown("""
     <style>
         /* 1. Target the specific form container background */
@@ -45,27 +44,29 @@ st.markdown("""
         
         /* 4. Target the form submit button text and background explicitly */
         div[data-testid="stForm"] button {
-            background-color: #FFFFFF !important;
-            border: 1px solid #000000 !important;
+            background-color: #310054 !important; /* Slightly darker purple than container for contrast */
+            border: 1px solid #FFFFFF !important; /* Clean white border outline */
             width: 100% !important; 
-            color: #000000 !important;
+            color: #FFFFFF !important; /* Permanent white text color */
         }
 
-        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO BLACK */
+        /* FORCE ALL INNER BUTTON TEXT ELEMENTS TO WHITE */
         div[data-testid="stForm"] button * {
-            color: #000000 !important; 
+            color: #FFFFFF !important; 
             font-weight: bold !important;
         }
         
         /* Button hover effect */
         div[data-testid="stForm"] button:hover {
-            background-color: #F0F2F6 !important;
+            background-color: #5C00A3 !important; /* Vibrant purple pop when cursor moves over it */
+            border: 1px solid #FFFFFF !important;
         }
         div[data-testid="stForm"] button:hover * {
-            color: #000000 !important;
+            color: #FFFFFF !important;
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.divider()
 
