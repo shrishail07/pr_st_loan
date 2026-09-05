@@ -35,10 +35,20 @@ st.markdown("""
             font-weight: bold !important;
         }
 
-        /* 3. Style the inputs so they stand out against purple background */
-        div[data-testid="stForm"] input, 
-        div[data-testid="stForm"] div[data-baseweb="select"] {
+        /* 3. Style the text inputs and selection blocks so they are uniform white */
+        div[data-testid="stForm"] input {
             background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+
+        /* FIX FOR THE SELECT/DROPDOWN BOX */
+        div[data-testid="stForm"] div[data-baseweb="select"] > div {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+        
+        /* Fix text color inside selection dropdown control */
+        div[data-testid="stForm"] div[data-baseweb="select"] * {
             color: #000000 !important;
         }
         
@@ -66,6 +76,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 
 st.divider()
