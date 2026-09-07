@@ -1,5 +1,6 @@
 import streamlit as st
 from supabase_client import supabase
+import pandas as pd
 
 st.markdown(
     '<div style="background-color: #e8f4f8; padding: 10px; border-left: 5px solid #29b6f6; border-radius: 4px;">'
